@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -10,12 +11,15 @@ class Event extends Model
         'title',
         'description',
         'event_date',
+        'location'
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'event_date' => 'date'
+    ];
+
+    public function tags()
     {
-        return [
-            'event_date' => 'date',
-        ];
+        return $this->belongsToMany(Tag::class);
     }
 }

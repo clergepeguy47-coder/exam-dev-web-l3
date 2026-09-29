@@ -21,7 +21,7 @@
                     <article class="card h-100 event-card">
                         <div class="card-body">
                             <p class="event-date mb-2">
-                                {{ $event->event_date->format('d/m/Y') }}
+                                {{ $event->event_date ? $event->event_date->format('d/m/Y') : 'Date non définie' }}
                             </p>
 
                             <h2 class="h5">{{ $event->title }}</h2>
@@ -30,7 +30,7 @@
                                 {{ \Illuminate\Support\Str::limit($event->description, 110) }}
                             </p>
 
-                            <a href="events/{{$event->id}}" class="btn btn-outline-primary">
+                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-outline-primary">
                                 Voir l'événement
                             </a>
                         </div>

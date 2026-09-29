@@ -10,7 +10,7 @@
     <article class="card">
         <div class="card-body p-4">
             <p class="event-date">
-                {{ $event->event_date->format('d/m/Y') }}
+                {{ $event->event_date ? $event->event_date->format('d/m/Y') : 'Date non définie' }}
             </p>
 
             <h1>{{ $event->title }}</h1>
